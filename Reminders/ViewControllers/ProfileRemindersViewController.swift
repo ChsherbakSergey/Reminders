@@ -11,7 +11,9 @@ class ProfileRemindersViewController: UIViewController {
 
     private let saveButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(systemName: "ellipsis"), for: .normal)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 30, weight: .thin)
+        let image = UIImage(systemName: "ellipsis", withConfiguration: configuration)
+        button.setImage(image, for: .normal)
         button.tintColor = .white
         button.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.9)
         return button
