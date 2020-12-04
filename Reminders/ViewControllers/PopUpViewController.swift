@@ -50,7 +50,7 @@ class PopUpViewController: UIViewController {
     }()
     
     //Constants and variables
-    public var completion: ((String, String, Date) -> Void)?
+    public var completion: ((Date) -> Void)?
     
     
     //Life cycle
@@ -99,7 +99,9 @@ class PopUpViewController: UIViewController {
     }
     
     @objc private func didTapSaveButton() {
-        
+        let date = datePicker.date
+        completion?(date)
+        finishAnimation()
     }
 
     @objc private func didTapCancelButton() {

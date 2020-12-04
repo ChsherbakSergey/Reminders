@@ -54,6 +54,7 @@ class AddReminderViewController: UIViewController {
     
     //Constants and Variables
     let maxLength = 150
+    var date = Date()
     
     public var completion: ((String, String, Date) -> Void)?
     
@@ -63,6 +64,7 @@ class AddReminderViewController: UIViewController {
         setInitialUI()
         setDelegates()
         setTargetsToButtons()
+        configureNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -75,7 +77,7 @@ class AddReminderViewController: UIViewController {
         //Frame of the line view
         lineView.frame = CGRect(x: 20, y: titleTextField.bottom + 5, width: view.width - 40, height: 2)
         //Frame of the reminder textField
-        reminderTextField.frame = CGRect(x: 20, y: lineView.bottom + 10, width: view.width - 40, height: 210)
+        reminderTextField.frame = CGRect(x: 17, y: lineView.bottom + 10, width: view.width - 34, height: 210)
         reminderTextField.layer.cornerRadius = 10
         //Frame of CharactersRemaining Label
         charactersRemainingLabel.frame = CGRect(x: view.width / 2, y: reminderTextField.bottom + 5, width: view.width / 2 - 40, height: 50)
@@ -101,15 +103,32 @@ class AddReminderViewController: UIViewController {
         reminderTextField.delegate = self
     }
     
-    ///Sets targets to buttons
-    private func setTargetsToButtons() {
-        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+    ///Configures navigationBar
+    private func configureNavigationBar() {
+        let rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     @objc private func didTapSaveButton() {
         guard let title = titleTextField.text, !title.isEmpty, let reminder = reminderTextField.text, !reminder.isEmpty else {
             return
         }
+        guard let popUpVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "popUp") as? PopUpViewController else {
+            return
+        }
+        popUpVc.completion = { [weak self] date in
+            self?.date = date
+        }
+        completion?(title, reminder, date)
+        
+    }
+    
+    ///Sets targets to buttons
+    private func setTargetsToButtons() {
+        saveButton.addTarget(self, action: #selector(didTapPinButton), for: .touchUpInside)
+    }
+    
+    @objc private func didTapPinButton() {
         guard let popUpVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "popUp") as? PopUpViewController else {
             return
         }
