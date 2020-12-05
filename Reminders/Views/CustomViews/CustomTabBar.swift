@@ -27,7 +27,6 @@ class CustomTabBar : UITabBar {
 //        shapeLayer.path = createBezierPath()
         shapeLayer.path = createCirclePath()
         shapeLayer.strokeColor = UIColor.lightGray.cgColor
-//        shapeLayer.fillColor = UIColor(displayP3Red: 255, green: 255, blue: 255, alpha: 0.9).cgColor
         shapeLayer.fillColor = UIColor.systemGray6.withAlphaComponent(0.8).cgColor
         shapeLayer.lineWidth = 1.0
         

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PopUpViewControllerDelegate: AnyObject {
+    func didTapDoneButton(date: Date)
+}
+
 class PopUpViewController: UIViewController {
 
     private let popUpView : UIView = {
@@ -50,8 +54,7 @@ class PopUpViewController: UIViewController {
     }()
     
     //Constants and variables
-    public var completion: ((Date) -> Void)?
-    
+    weak var delegate : PopUpViewControllerDelegate?
     
     //Life cycle
     override func viewDidLoad() {
@@ -100,7 +103,8 @@ class PopUpViewController: UIViewController {
     
     @objc private func didTapSaveButton() {
         let date = datePicker.date
-        completion?(date)
+//        completion?(date)
+        delegate?.didTapDoneButton(date: date)
         finishAnimation()
     }
 

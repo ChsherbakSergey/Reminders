@@ -16,6 +16,7 @@
 		A55209092577AFC100832108 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55209082577AFC100832108 /* CustomTabBar.swift */; };
 		A552090C2577B78D00832108 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552090B2577B78D00832108 /* Extensions.swift */; };
 		A55209102577BED600832108 /* ProfileRemindersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A552090F2577BED600832108 /* ProfileRemindersViewController.swift */; };
+		A555CB48257BD592000E0BDE /* PopUpTableViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555CB47257BD592000E0BDE /* PopUpTableViewViewController.swift */; };
 		A55A8038257A35E700689EC5 /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A8037257A35E700689EC5 /* Reminder.swift */; };
 		A55A803B257A38D500689EC5 /* AddReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A803A257A38D500689EC5 /* AddReminderViewController.swift */; };
 		A55A8042257A73A400689EC5 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55A8041257A73A400689EC5 /* PopUpViewController.swift */; };
@@ -34,6 +35,7 @@
 		A55209082577AFC100832108 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		A552090B2577B78D00832108 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A552090F2577BED600832108 /* ProfileRemindersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRemindersViewController.swift; sourceTree = "<group>"; };
+		A555CB47257BD592000E0BDE /* PopUpTableViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpTableViewViewController.swift; sourceTree = "<group>"; };
 		A55A8037257A35E700689EC5 /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		A55A803A257A38D500689EC5 /* AddReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderViewController.swift; sourceTree = "<group>"; };
 		A55A8041257A73A400689EC5 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				A552090F2577BED600832108 /* ProfileRemindersViewController.swift */,
 				A55A803A257A38D500689EC5 /* AddReminderViewController.swift */,
 				A55A8041257A73A400689EC5 /* PopUpViewController.swift */,
+				A555CB47257BD592000E0BDE /* PopUpTableViewViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			files = (
 				A55A803B257A38D500689EC5 /* AddReminderViewController.swift in Sources */,
 				A552090C2577B78D00832108 /* Extensions.swift in Sources */,
+				A555CB48257BD592000E0BDE /* PopUpTableViewViewController.swift in Sources */,
 				A55A8038257A35E700689EC5 /* Reminder.swift in Sources */,
 				A55209092577AFC100832108 /* CustomTabBar.swift in Sources */,
 				A55A8045257AEE6F00689EC5 /* ReminderCollectionViewCell.swift in Sources */,

@@ -11,12 +11,6 @@ import UserNotifications
 class RemindersController: UIViewController {
     
     //Views that will be displayed on this controller
-//    private let tableView: UITableView = {
-//        let tableView = UITableView()
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-//        return tableView
-//    }()
-    
     private var collectionView : UICollectionView?
     
     private let addButton: UIButton = {
@@ -46,8 +40,6 @@ class RemindersController: UIViewController {
         //Frame of the add button
         addButton.frame = CGRect(x: (view.width / 2) - 40, y: view.height - view.safeAreaInsets.bottom - 40, width: 80, height: 80)
         addButton.layer.cornerRadius = addButton.width / 2
-        //frame of the tableView
-//        tableView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: addButton.bottom - 230)
         //frame of the collection view
         collectionView?.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: view.width, height: addButton.bottom - 230)
     }
@@ -58,7 +50,6 @@ class RemindersController: UIViewController {
         view.backgroundColor = .systemBackground
         //Adding subviews
         view.addSubview(addButton)
-//        view.addSubview(tableView)
         //Adding collectionView into the main view
         configureCollectionView()
         guard let collectionView = collectionView else {
@@ -71,13 +62,13 @@ class RemindersController: UIViewController {
     private func configureCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 15
         layout.minimumInteritemSpacing = 1
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        layout.sectionInset = UIEdgeInsets(top: 12.5, left: 15, bottom: 10, right: 12.5)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.itemSize = CGSize(width: (view.width - 40) / 2,
-                                 height: (view.width - 40) / 2)
-        collectionView?.backgroundColor = .red
+                                 height: (view.width - 40) / 2.25)
+        collectionView?.backgroundColor = .systemBackground
         //Cell
         collectionView?.register(ReminderCollectionViewCell.self, forCellWithReuseIdentifier: ReminderCollectionViewCell.identifier)
     }
@@ -91,8 +82,6 @@ class RemindersController: UIViewController {
     
     ///Sets delegates
     private func setDelegates() {
-//        tableView.delegate = self
-//        tableView.dataSource = self
         collectionView?.delegate = self
         collectionView?.dataSource = self
     }
@@ -107,10 +96,10 @@ class RemindersController: UIViewController {
         let vc = AddReminderViewController()
         vc.navigationItem.largeTitleDisplayMode = .always
         vc.title = "New Reminder"
-        vc.completion = { [weak self] title, reminder, date in
+        vc.completion = { [weak self] title, reminder, date, color in
             DispatchQueue.main.async {
                 self?.navigationController?.popToRootViewController(animated: true)
-                let newModel = Reminder(title: title, date: date, identifier: "id_\(title)", reminder: reminder)
+                let newModel = Reminder(title: title, date: date, identifier: "id_\(title)", reminder: reminder, color: color)
                 self?.models.append(newModel)
 //                self?.tableView.reloadData()
                 self?.collectionView?.reloadData()
@@ -166,27 +155,6 @@ class RemindersController: UIViewController {
         })
     }
 
-}
-
-//MARK: - UITableViewDelegate and UITableViewDataSource Realization
-
-extension RemindersController: UITableViewDelegate, UITableViewDataSource{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        models.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text =  model.title
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource and UICollectionViewDelegateFlowLayout Realization
